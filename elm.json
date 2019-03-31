@@ -1,12 +1,13 @@
 {
     "type": "package",
-    "name": "Gizra/elm-debouncer",
-    "summary": "The most comprehensive debouncer for Elm",
+    "name": "glasserc/elm-debouncer",
+    "summary": "A forked debouncer",
     "license": "MIT",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "exposed-modules": [
-        "Debouncer.Basic",
-        "Debouncer.Messages"
+      "Debouncer.Basic",
+      "Debouncer.Internal",
+      "Debouncer.Messages"
     ],
     "elm-version": "0.19.0 <= v < 0.20.0",
     "dependencies": {
