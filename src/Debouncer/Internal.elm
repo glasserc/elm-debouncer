@@ -16,6 +16,14 @@ asynchronous:
 The user-facing documentation for these types is in `Debouncer.Basic` and
 `Debouncer.Messages`, since those are the exposed modules.
 
+@docs Accumulator, Config, ConfigRecord, Debouncer
+@docs Milliseconds, Msg, State, UnsettledState
+@docs accumulateWith, addInputs, allInputs, appendInputToOutput
+@docs appendOutputToInput, cancel, debounce, emitFirstInput
+@docs emitWhenUnsettled, emitWhileUnsettled, firstInput, fromSeconds
+@docs lastInput, manual, nothingIfNegative, sanitizeConfig
+@docs settleWhenQuietFor, throttle, toDebouncer, update
+
 -}
 
 import List.Extra
@@ -211,6 +219,8 @@ throttle interval =
         |> emitWhenUnsettled (Just 0)
 
 
+{-| Docs docs docs.
+-}
 emitWhenUnsettled : Maybe Milliseconds -> Config i o -> Config i o
 emitWhenUnsettled time (Config config) =
     Config
@@ -242,12 +252,16 @@ emitFirstInput choice =
         emitWhenUnsettled Nothing
 
 
+{-| Docs docs docs.
+-}
 emitWhileUnsettled : Maybe Milliseconds -> Config i o -> Config i o
 emitWhileUnsettled time (Config config) =
     Config
         { config | emitWhileUnsettled = time }
 
 
+{-| Docs docs docs.
+-}
 settleWhenQuietFor : Maybe Milliseconds -> Config i o -> Config i o
 settleWhenQuietFor time (Config config) =
     Config
@@ -267,6 +281,8 @@ accumulateWith accumulator (Config config) =
         }
 
 
+{-| Docs docs docs.
+-}
 toDebouncer : Config i o -> Debouncer i o
 toDebouncer config =
     Debouncer (sanitizeConfig config) Settled
@@ -284,6 +300,8 @@ sanitizeConfig (Config config) =
         }
 
 
+{-| Docs docs docs.
+-}
 nothingIfNegative : Maybe number -> Maybe number
 nothingIfNegative =
     Maybe.andThen
@@ -296,6 +314,8 @@ nothingIfNegative =
         )
 
 
+{-| Docs docs docs.
+-}
 type State o
     = Settled
     | Unsettled (UnsettledState o)
@@ -314,6 +334,8 @@ type alias UnsettledState o =
     }
 
 
+{-| Docs docs docs.
+-}
 type Msg i
     = InputProvidedAt i Milliseconds
     | ManualCancel
