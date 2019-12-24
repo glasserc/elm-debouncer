@@ -2,10 +2,10 @@
 
 # elm-debouncer
 
-This is a fork of Gizra/elm-debouncer.
+This was a fork of Gizra/elm-debouncer.
 
 I exposed Debouncer.Internal because of https://github.com/elm/compiler/issues/1864.
 
-I am hoping this will help but it's really just a shot in the dark.
+It worked fine but now that Elm 0.19.1 is out, we no longer need it.
 
-You probably shouldn't use this package for literally anything.
+You should probably migrate back to the original Gizra/elm-debouncer package.
